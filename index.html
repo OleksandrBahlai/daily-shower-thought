@@ -1,1 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Daily Shower Thought</title>
+
+  <meta
+    name="description"
+    content="One AI-generated shower thought every day."
+  >
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0f0f0f;
+      color: white;
+      font-family: Arial, sans-serif;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 100vh;
+      text-align: center;
+    }
+
+    #container {
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    #title {
+      font-size: 14px;
+      opacity: 0.6;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    #thought {
+      font-size: 2rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="container">
+    <div id="title">Today's Shower Thought</div>
+    <div id="thought">Loading...</div>
+  </div>
+
+  <script>
+    async function loadThought() {
+      try {
+        const response = await fetch('./thought.json');
+        const data = await response.json();
+
+        document.getElementById('thought').textContent =
+          `"${data.thought}"`;
+
+      } catch (error) {
+        document.getElementById('thought').textContent =
+          'Failed to load thought.';
+      }
+    }
+
+    loadThought();
+  </script>
+
+</body>
+</html>
